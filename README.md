@@ -61,6 +61,8 @@ We use a configuration file to ensure consistency via Infrastructure as Code (Ia
 
 Bash
 # Navigate to the project directory
+
+git clone https://github.com/Masterhuthiu/K8s-Production-Showcase.git
 cd 02-modern-k3d-ha/
 
 # Initialize the cluster from the config file
