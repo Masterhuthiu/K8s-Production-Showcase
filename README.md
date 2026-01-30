@@ -86,6 +86,8 @@ kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
   --timeout=120s
+
+  
 Step 4: Deploy Sample Application
 Now, deploy a web application featuring Replicas, Health Checks, and Ingress routing:
 
