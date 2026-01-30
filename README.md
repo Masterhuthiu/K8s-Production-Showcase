@@ -114,5 +114,5 @@ Access the App: Open your browser at http://localhost:8888 (or the IP of your PW
 </p>
 
 <p align="center">
-  <img src="result.png" alt="Kubernetes Deployment Result" width="800">
+  <img src="result.PNG" alt="Kubernetes Deployment Result" width="800">
 </p>
