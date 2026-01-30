@@ -110,7 +110,7 @@ Check pods: kubectl get ing,svc,pods
 Access the App: Open your browser at http://localhost:8888 (or the IP of your PWD host).
 
 <p align="center">
-  <img src="openport8888.png" alt="Open Port 8888 " width="800">
+  <img src="openport8888.PNG" alt="Open Port 8888 " width="800">
 </p>
 
 <p align="center">
