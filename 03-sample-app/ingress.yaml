@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: web-demo-ingress
   annotations:
+    # Annotations giúp Nginx bản cũ và mới đều hiểu
     kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx
