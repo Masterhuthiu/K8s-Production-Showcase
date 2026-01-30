@@ -105,7 +105,7 @@ Check Nodes: kubectl get nodes (You should see 3 servers and 2 agents).
 
 Check Pods: kubectl get pods -A (All pods should be in the Running state).
 
-Check pods: kubectl get ing,svc,pods
+Check pods: kubectl get ing,svc,pods 
 
 Access the App: Open your browser at http://localhost:8888 (or the IP of your PWD host).
 
