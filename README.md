@@ -53,7 +53,7 @@ Bash
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 # 2. Install kubectl (K8s Command-line tool)
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://downloads.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -L -o kubectl "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 Step 2: Initialize HA Cluster (3 Servers)
@@ -63,16 +63,21 @@ Bash
 # Navigate to the project directory
 
 git clone https://github.com/Masterhuthiu/K8s-Production-Showcase.git
-cd 02-modern-k3d-ha/
+cd K8s-Production-Showcase/
 
 # Initialize the cluster from the config file
-k3d cluster create --config cluster-config.yaml
+k3d cluster create --config 02-modern-k3d-ha/cluster-config.yaml
 Step 3: Install Nginx Ingress Controller
 Since this cluster is designed for Production, we will install Nginx Ingress to manage inbound traffic:
 
 Bash
 # Deploy Nginx Ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+Check Cluster:
+
+kubectl get nodes
+kubectl get pods -n kube-system
 
 # Wait for the Ingress Controller to be ready
 kubectl wait --namespace ingress-nginx \
