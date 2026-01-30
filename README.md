@@ -93,6 +93,7 @@ Bash
 kubectl apply -f 03-sample-app/ 
 
 # Chạy lệnh này (nó sẽ treo terminal để giữ kết nối)
+#run this command and keep terminal (Don't Ctlt + C)
 kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 8888:80 --address 0.0.0.0
 
 📊 Verify the Results
@@ -107,6 +108,10 @@ Check Pods: kubectl get pods -A (All pods should be in the Running state).
 Check pods: kubectl get ing,svc,pods
 
 Access the App: Open your browser at http://localhost:8888 (or the IP of your PWD host).
+
+<p align="center">
+  <img src="openport8888.png" alt="Open Port 8888 " width="800">
+</p>
 
 <p align="center">
   <img src="result.png" alt="Kubernetes Deployment Result" width="800">
