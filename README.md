@@ -92,7 +92,7 @@ Now, deploy a web application featuring Replicas, Health Checks, and Ingress rou
 Bash
 kubectl apply -f 03-sample-app/ 
 
-# Chạy lệnh này (nó sẽ treo terminal để giữ kết nối)
+
 #run this command and keep terminal (Don't Ctlt + C)
 kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 8888:80 --address 0.0.0.0
 
