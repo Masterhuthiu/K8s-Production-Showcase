@@ -1,44 +1,26 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: k3d.io/v1alpha5
+kind: Simple
 metadata:
-  name: production-web-demo
-  labels:
-    app: web-demo
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: web-demo
-  template:
-    metadata:
-      labels:
-        app: web-demo
-    spec:
-      affinity:
-        podAntiAffinity: # HA: Không cho 2 pod nằm trên cùng 1 node
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - web-demo
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: nginx
-        image: nginx:alpine
-        ports:
-        - containerPort: 80
-        resources: # Resource Management
-          limits:
-            cpu: "200m"
-            memory: "128Mi"
-          requests:
-            cpu: "100m"
-            memory: "64Mi"
-        livenessProbe: # Health Check
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+  name: my-production-cluster
+servers: 3
+agents: 2
+image: rancher/k3s:v1.31.5-k3s1
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 8443:443
+    nodeFilters:
+      - loadbalancer
+options:
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
+      - arg: --disable=servicelb
+        nodeFilters:
+          - server:*
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchContext: true
