@@ -46,6 +46,7 @@ Minimum Hardware: 4GB RAM & 2 CPUs.
 
 🛠 Step-by-Step Installation Guide
 Step 1: Install Control Tools
+
 If your machine is fresh, run the following commands (Supports Linux/Alpine/MacOS):
 
 Bash
@@ -58,7 +59,8 @@ chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 Step 2: Initialize HA Cluster (3 Servers)
 We use a configuration file to ensure consistency via Infrastructure as Code (IaC):
-
+# 3. install nginx
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 Bash
 # Navigate to the project directory
 
@@ -88,14 +90,24 @@ Step 4: Deploy Sample Application
 Now, deploy a web application featuring Replicas, Health Checks, and Ingress routing:
 
 Bash
-cd ../03-sample-app/
-kubectl apply -f deployment.yaml
-kubectl apply -f ingress.yaml
+kubectl apply -f 03-sample-app/ 
+
+# Chạy lệnh này (nó sẽ treo terminal để giữ kết nối)
+kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 8888:80 --address 0.0.0.0
+
 📊 Verify the Results
+
+
 Once finished, run these commands to confirm the system status:
 
 Check Nodes: kubectl get nodes (You should see 3 servers and 2 agents).
 
 Check Pods: kubectl get pods -A (All pods should be in the Running state).
 
-Access the App: Open your browser at http://localhost:8080 (or the IP of your PWD host).
+Check pods: kubectl get ing,svc,pods
+
+Access the App: Open your browser at http://localhost:8888 (or the IP of your PWD host).
+
+<p align="center">
+  <img src="result.png" alt="Kubernetes Deployment Result" width="800">
+</p>
