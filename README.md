@@ -1,4 +1,5 @@
-To deploy this project in a real-world environment (On-premises or Cloud VM), the architecture should be tailored to enterprise needs:
+
+To deploy this project in a real-world environment (On-premises, Cloud VM or or https://labs.play-with-docker.com/), the architecture should be tailored to enterprise needs:
 
 1. Minimum Hardware Requirements
 For a standard High Availability (HA) setup, a minimum of 06 Nodes running Ubuntu 22.04/24.04 LTS is recommended:
